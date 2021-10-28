@@ -13,9 +13,13 @@ export const ItemListContainer = ({titulo}) => {
     return (
         <>
             <h2>{titulo}</h2>
-            <ItemCount stock='5' initial='1'/>
+            <ItemCount stock='5' initial='1' onAdd={onAdd}/>
         </>
     )
+}
+
+const onAdd = (valor) => {
+    console.log(valor);
 }
 
 export const ItemList = () =>{

@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 
-export default function ItemCount({ stock }) {
-    const [count, setCount] = useState(1);
+export default function ItemCount({ stock, initial, onAdd }) {
+    const [count, setCount] = useState(initial);
 
     const verifyAdd = () => {
         if (count >= 1 && count < stock) {
-            onAdd();
+            add();
         }
     }
     const verifyRemove = () => {
         if (count > 1) {
-            onRemove();
+            remove();
         }
     }
-    const onAdd = () => {
+    const add = () => {
         setCount(count + 1);
+        onAdd();
     }
-    const onRemove = () => {
+    const remove = () => {
         setCount(count - 1);
     }
     const addCarrito = () => {
