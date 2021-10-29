@@ -15,7 +15,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
     }
     const add = () => {
         setCount(count + 1);
-        onAdd();
+        onAdd("valor del hijo: " + count);
     }
     const remove = () => {
         setCount(count - 1);
