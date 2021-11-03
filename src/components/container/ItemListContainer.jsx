@@ -1,35 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount';
 import Item from '../Item';
 
 
 const items = [
-    {id:1, title:"Remera", img:"{remera1.png}", price:200, stock:5 },
-    {id:2, title:"Pantalon", img:"", price:125, stock:4 },
-    {id:3, title:"Gorro", img:'../img/gorro1.png', price:275, stock:3 }
+    { id: 1, title: "Remera", img: "{remera1.png}", price: 200, stock: 5 },
+    { id: 2, title: "Pantalon", img: "", price: 125, stock: 4 },
+    { id: 3, title: "Gorro", img: '../img/gorro1.png', price: 275, stock: 3 }
 ];
 
-export const ItemListContainer = ({titulo}) => {
+export const ItemListContainer = ({ titulo }) => {
     return (
         <>
             <h2>{titulo}</h2>
-            <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+            <ItemCount stock={5} initial={1} />
         </>
     )
 }
 
-const onAdd = (valor) => {
-    console.log(valor);
-}
 
-export const ItemList = () =>{
+
+export const ItemList = () => {
     const [item, setItem] = useState([])
-    getFetch.then( res => {
-        setItem(res)
-    }).catch(err => console.log(err))
-    .finally()
+    useEffect(() => {
+        setTimeout(() => {
+            getFetch.then( res => {
+                setItem(res)
+            }).catch(err => console.log(err))
+            .finally()
+        }, 2000)
+    },[])
     return (
-        item.map((i) => <Item key={i.id} item={i}/>)
+        item.map((i) => <Item key={i.id} item={i} />)
     )
 }
 
